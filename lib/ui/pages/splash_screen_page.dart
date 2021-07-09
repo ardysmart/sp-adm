@@ -57,19 +57,19 @@ class _SplashScreenState extends State<SplashScreen> {
             children: [
               Center(
                 child: Container(
-                  margin: EdgeInsets.fromLTRB(20, 50, 20, 10),
-                  height: 200,
-                  width: 200,
+                  margin: EdgeInsets.fromLTRB(20, 150, 20, 10),
+                  height: 300,
+                  width: 300,
                   child: Image.asset(
-                    "assets/images/uk-white.png",
+                   "assets/images/logo_white_sm.png",
                     fit: BoxFit.cover,
                   ),
                 ),
               ),
               Container(
-                  height: 40,
-                  width: 230,
-                  child: Image.asset("assets/images/sp-adm.png")),
+                  height: 70,
+                  width: 300,
+                  child: Image.asset("assets/images/smart_media_main.png")),
             ],
           ),
         ],

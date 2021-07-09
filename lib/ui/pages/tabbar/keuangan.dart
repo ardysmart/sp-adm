@@ -1,49 +1,82 @@
 part of '../pages.dart';
 
-class Keuangan extends StatefulWidget {
-  @override
-  _KeuanganState createState() => _KeuanganState();
-}
-
-Map<String, double> dataMap = {
-  "Pemasukan": 15000000,
-  "Pengeluaran": 3000000,
-};
-
-class _KeuanganState extends State<Keuangan> {
+class Keuangan extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Container(
-            child: PieChart(
-          dataMap: dataMap,
-          animationDuration: Duration(milliseconds: 800),
-          chartLegendSpacing: 32,
-          chartRadius: MediaQuery.of(context).size.width / 3.2,
-          // colorList: Colors.pink,
-          initialAngleInDegree: 0,
-          chartType: ChartType.disc,
-          ringStrokeWidth: 32,
-          centerText: "Laporan Keuangan",
-          legendOptions: LegendOptions(
-            showLegendsInRow: false,
-            legendPosition: LegendPosition.right,
-            showLegends: true,
-            legendShape: BoxShape.circle,
-            legendTextStyle: TextStyle(
-              fontWeight: FontWeight.bold,
+    Widget transactionItem({
+      String iconUrl,
+      String title,
+      String time,
+      String view,
+    }) {
+      return Container(
+        padding: EdgeInsets.all(15),
+        margin: EdgeInsets.only(
+          bottom: 16,
+        ),
+        decoration: BoxDecoration(
+          color: whiteColor,
+          borderRadius: BorderRadius.circular(18),
+        ),
+        child: ListTile(
+          contentPadding: EdgeInsets.zero,
+          leading: Image.asset(
+            iconUrl,
+          ),
+          title: Text(
+            title,
+            style: blackTextStyle.copyWith(
+              fontSize: 16,
+              fontWeight: medium,
             ),
           ),
-          chartValuesOptions: ChartValuesOptions(
-            showChartValueBackground: false,
-            showChartValues: true,
-            showChartValuesInPercentage: false,
-            showChartValuesOutside: false,
+          subtitle: Text(
+            time,
+            style: greyTextStyle.copyWith(
+              fontSize: 12,
+            ),
           ),
-        )),
-      ],
+          trailing: Text(
+            view,
+            style: blackTextStyle.copyWith(
+              fontSize: 16,
+              fontWeight: medium,
+            ),
+            
+          ),
+        ),
+      );
+    }
+
+    return Container(
+      margin: EdgeInsets.only(
+        top: 30,
+      ),
+      padding: EdgeInsets.symmetric(
+        horizontal: defaultMargin2,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Laporan keuangan',
+            style: blackTextStyle.copyWith(
+              fontSize: 18,
+              fontWeight: medium,
+            ),
+          ),
+          SizedBox(
+            height: 12,
+          ),
+          transactionItem(
+            iconUrl: 'assets/images/keuangan.png',
+            title: 'Laporan Keuangan',
+            time: '2020 - 2021',
+            view: 'Lihat',
+          ),
+          
+        ],
+      ),
     );
   }
 }

@@ -25,28 +25,96 @@ class _ForkomState extends State<Forkom> {
               ? Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: state.forkoms
-                      .map((e) => Container(
-                            child: Column(
+                      .map(
+                        (e) => Container(
+                            decoration:
+                                BoxDecoration(color: Colors.white, boxShadow: [
+                              BoxShadow(
+                                color: Colors.black,
+                                spreadRadius: 0,
+                                blurRadius: 3,
+                              ),
+                            ]),
+                            margin: EdgeInsets.fromLTRB(15, 20, 15, 0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(e.id.toString()),
-                                Text(e.judul),
-                                InkWell(
-                                  child: Container(
-                                      padding: EdgeInsets.only(top: 30),
-                                      child: Text(
-                                        "Daftar disini",
-                                        style: TextStyle(
-                                            color: Colors.black26,
-                                            fontSize: 11),
+                                Container(
+                                  margin: EdgeInsets.fromLTRB(10, 20, 15, 20),
+                                  alignment: Alignment.centerLeft,
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                          child: Image.asset(
+                                        "assets/images/doc.png",
+                                        width: 45,
                                       )),
-                                  onTap: () async {
-                                    await _launchURL(e.file);
-                                  },
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text("Dokumen :",
+                                              style: TextStyle(
+                                                  fontSize: 12,
+                                                  color: Colors.black26)),
+                                          Text(e.judul,
+                                              style: TextStyle(
+                                                  fontWeight: bold,
+                                                  fontSize: 16)),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                                SizedBox(height: 20),
+                                Container(
+                                  margin: EdgeInsets.only(right: 10),
+                                  child: InkWell(
+                                    child: Container(
+                                        child: Text(
+                                      "Lihat",
+                                      style: TextStyle(
+                                          color: Colors.black, fontSize: 15),
+                                    )),
+                                    onTap: () async {
+                                      await _launchURL(e.file);
+                                    },
+                                  ),
+                                ),
                               ],
+                            )
+                            // Column(
+                            //   children: [
+                            //     Text(e.name),
+                            //     Text(e.date),
+                            //     Text(e.place),
+                            //     SizedBox(height: 20),
+                            //   ],
+                            // ),
                             ),
-                          ))
+                        // Container(
+                        //   color: Colors.yellow,
+                        //       child: Column(
+                        //         children: [
+                        //           Text(e.id.toString()),
+                        //           Text(e.judul),
+                        // InkWell(
+                        //   child: Container(
+                        //       padding: EdgeInsets.only(top: 30),
+                        //       child: Text(
+                        //         "Daftar disini",
+                        //         style: TextStyle(
+                        //             color: Colors.black26,
+                        //             fontSize: 11),
+                        //       )),
+                        //   onTap: () async {
+                        //     await _launchURL(e.file);
+                        //   },
+                        // ),
+                        //           SizedBox(height: 20),
+                        //         ],
+                        //       ),
+                        //     )
+                      )
                       .toList(),
                 )
               : SizedBox(

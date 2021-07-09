@@ -24,7 +24,7 @@ TabBar myTabbar = TabBar(
       ),
       Tab(
         key: ObjectKey(3),
-        text: "Forkom",
+        text: "Bipartid & Perundingan",
       ),
       Tab(
         key: ObjectKey(4),

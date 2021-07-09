@@ -75,7 +75,7 @@ class _HomePageProductState extends State<HomePageProduct> {
                                       builder: (_) => ProductDetailPage(
                                             id: e.id.toString(),
                                             name: e.name,
-                                            code: "asdasdasd",
+                                            code: "",
                                             img: e.img,
                                             price: e.harga,
                                             promotionPrice: "1982927",
@@ -111,7 +111,7 @@ class _HomePageProductState extends State<HomePageProduct> {
                                     Padding(
                                       padding: const EdgeInsets.only(left: 15),
                                       child: Text(
-                                        "asasdasd",
+                                        e.name,
                                         style: TextStyle(fontSize: 16),
                                       ),
                                     ),
@@ -121,7 +121,11 @@ class _HomePageProductState extends State<HomePageProduct> {
                                     Padding(
                                       padding: const EdgeInsets.only(left: 15),
                                       child: Text(
-                                        e.harga.toString() + " USD",
+                                        NumberFormat.currency(
+                                                locale: 'id',
+                                                symbol: 'Rp. ',
+                                                decimalDigits: 0)
+                                            .format(e.harga.toInt()),
                                         style: TextStyle(fontSize: 16),
                                       ),
                                     ),
@@ -133,7 +137,10 @@ class _HomePageProductState extends State<HomePageProduct> {
                           ))
                       .toList())
               : SizedBox(),
-        )
+        ),
+        SizedBox(
+          height: 60,
+        ),
       ],
     );
   }

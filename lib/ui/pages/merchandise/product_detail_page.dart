@@ -55,7 +55,9 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
       child: FlatButton(
           color: primary,
           onPressed: () {
-            // your add cart here
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Payment()));
           },
           child: Text(
             "ADD TO CART",
@@ -93,7 +95,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                   decoration: BoxDecoration(
                       image: DecorationImage(
                           image: new NetworkImage(activeImg),
-                          fit: BoxFit.cover)),
+                          fit: BoxFit.contain)),
                 ),
               ),
             ),
@@ -129,25 +131,25 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text(
-                    "Code :",
-                    style: TextStyle(fontSize: 16, height: 1.5),
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Flexible(
-                    child: Text(
-                      widget.code,
-                      style: TextStyle(fontSize: 16, height: 1.5),
-                    ),
-                  ),
+                  // Text(
+                  //   "Code :",
+                  //   style: TextStyle(fontSize: 16, height: 1.5),
+                  // ),
+                  // SizedBox(
+                  //   width: 20,
+                  // ),
+                  // Flexible(
+                  //   child: Text(
+                  //     widget.code,
+                  //     style: TextStyle(fontSize: 16, height: 1.5),
+                  //   ),
+                  // ),
                 ],
               ),
             ),
-            SizedBox(
-              height: 20,
-            ),
+            // SizedBox(
+            //   height: 20,
+            // ),
             Padding(
               padding: const EdgeInsets.only(left: 20, right: 20),
               child: Row(
@@ -164,21 +166,21 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                       child: Row(
                     children: <Widget>[
                       Text(
-                        widget.promotionPrice + " USD",
+                        NumberFormat.currency(locale: 'id', symbol: 'Rp. ', decimalDigits: 0).format(widget.price.toInt()),
                         style: TextStyle(fontSize: 16, height: 1.5),
                       ),
                       SizedBox(
                         width: 20,
                       ),
-                      Text(
-                        widget.price + " USD",
-                        style: TextStyle(
-                            fontSize: 20,
-                            height: 1.5,
-                            color: primary,
-                            fontWeight: FontWeight.w400,
-                            decoration: TextDecoration.lineThrough),
-                      )
+                      // Text(
+                      //   "Rp. " + widget.price ,
+                      //   style: TextStyle(
+                      //       fontSize: 20,
+                      //       height: 1.5,
+                      //       color: primary,
+                      //       fontWeight: FontWeight.w400,
+                      //       decoration: TextDecoration.lineThrough),
+                      // )
                     ],
                   )),
                 ],
@@ -221,7 +223,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                               borderRadius: BorderRadius.circular(5)),
                           child: Padding(
                             padding: const EdgeInsets.only(
-                                top: 12, bottom: 12, right: 15, left: 15),
+                                top: 0, bottom: 12, right: 15, left: 15),
                             child: Text(
                               widget.size[index]['value'],
                               style: TextStyle(fontSize: 16, height: 1.5),
