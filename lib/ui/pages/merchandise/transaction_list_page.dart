@@ -67,7 +67,25 @@ class _TransactionPageState extends State<TransactionPage> {
                                       style: TextStyle(
                                           color: Colors.black, fontSize: 15),
                                     )),
-                                    onTap: () async {},
+                                    onTap: () async {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                DetailtransactionPage(
+                                                  transaction: Transaction(
+                                                      id: e.id,
+                                                      userName: e.userName,
+                                                      quantity: e.quantity,
+                                                      total: e.total,
+                                                      status: e.status,
+                                                      merchandiseName:
+                                                          e.merchandiseName,
+                                                      linkPembayaran:
+                                                          e.linkPembayaran),
+                                                )),
+                                      );
+                                    },
                                   ),
                                 ),
                               ],

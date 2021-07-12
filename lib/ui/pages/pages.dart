@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:html';
 import 'dart:ui';
 import 'package:intl/intl.dart';
 
@@ -35,6 +36,7 @@ part 'merchandise/product_home_page.dart';
 part 'merchandise/product_detail_page.dart';
 part 'merchandise/upload_bukti.dart';
 part 'merchandise/transaction_list_page.dart';
+part 'merchandise/detail_transaction.dart';
 part 'register.dart';
 part 'main_page.dart';
 part 'tabbar/detail_program_page.dart';
