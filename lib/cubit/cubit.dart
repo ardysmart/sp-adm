@@ -7,3 +7,4 @@ export 'training_cubit.dart';
 export 'forkom_cubit.dart';
 export 'transaction_cubit.dart';
 export 'keuangan_cubit.dart';
+export 'dansosduk_cubit.dart';

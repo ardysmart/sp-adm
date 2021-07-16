@@ -15,6 +15,7 @@ part 'training_services.dart';
 part 'forkom_service.dart';
 part 'transaction_service.dart';
 part 'keuangan_service.dart';
+part 'dansosduk_service.dart';
 
 String baseURL = "https://sp-adm.com/";
 String baseURLApi = baseURL + 'api/';

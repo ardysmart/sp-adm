@@ -10,3 +10,4 @@ part 'training.dart';
 part 'forkom.dart';
 part 'transaction.dart';
 part 'keuangan.dart';
+part 'dansosduk.dart';

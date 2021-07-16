@@ -22,7 +22,8 @@ class CustomBottomNavBar extends StatelessWidget {
                 context.bloc<ForkomCubit>().getForkom();
                 ForkomState stateForkom = context.bloc<ForkomCubit>().state;
                 context.bloc<KeuanganCubit>().getLaporanKeuangan('7');
-                KeuanganState stateKeuangan = context.bloc<KeuanganCubit>().state;
+                KeuanganState stateKeuangan =
+                    context.bloc<KeuanganCubit>().state;
                 if (state is ProgramLoaded) {
                   onTap(0);
                 }
@@ -57,7 +58,15 @@ class CustomBottomNavBar extends StatelessWidget {
           GestureDetector(
             onTap: () {
               if (onTap != null) {
-                onTap(2);
+                context.bloc<DansosdukCubit>().getDansosduk(
+                    (context.bloc<UserCubit>().state as UserLoaded)
+                        .user
+                        .id
+                        .toString());
+                DansosdukState state = context.bloc<DansosdukCubit>().state;
+                if (state is DansosdukLoaded) {
+                  onTap(2);
+                }
               }
             },
             child: Container(

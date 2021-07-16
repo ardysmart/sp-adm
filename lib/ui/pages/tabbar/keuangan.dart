@@ -11,47 +11,53 @@ class Keuangan extends StatelessWidget {
       throw 'Could not launch $urlnew';
     }
   }
+
   Widget build(BuildContext context) {
     Widget transactionItem({
       String iconUrl,
       String title,
       String time,
       String view,
+      String url,
     }) {
-      return Container(
-        padding: EdgeInsets.all(15),
-        margin: EdgeInsets.only(
-          bottom: 16,
-        ),
-        decoration: BoxDecoration(
-          color: whiteColor,
-          borderRadius: BorderRadius.circular(18),
-        ),
-        child: ListTile(
-          contentPadding: EdgeInsets.zero,
-          leading: Image.asset(
-            iconUrl,
+      return GestureDetector(
+        onTap: () async {
+          await _launchURL(url);
+        },
+        child: Container(
+          padding: EdgeInsets.all(15),
+          margin: EdgeInsets.only(
+            bottom: 16,
           ),
-          title: Text(
-            title,
-            style: blackTextStyle.copyWith(
-              fontSize: 16,
-              fontWeight: medium,
-            ),
+          decoration: BoxDecoration(
+            color: whiteColor,
+            borderRadius: BorderRadius.circular(18),
           ),
-          subtitle: Text(
-            time,
-            style: greyTextStyle.copyWith(
-              fontSize: 12,
+          child: ListTile(
+            contentPadding: EdgeInsets.zero,
+            leading: Image.asset(
+              iconUrl,
             ),
-          ),
-          trailing: Text(
-            view,
-            style: blackTextStyle.copyWith(
-              fontSize: 16,
-              fontWeight: medium,
+            title: Text(
+              title,
+              style: blackTextStyle.copyWith(
+                fontSize: 16,
+                fontWeight: medium,
+              ),
             ),
-            
+            subtitle: Text(
+              time,
+              style: greyTextStyle.copyWith(
+                fontSize: 12,
+              ),
+            ),
+            trailing: Text(
+              view,
+              style: blackTextStyle.copyWith(
+                fontSize: 16,
+                fontWeight: medium,
+              ),
+            ),
           ),
         ),
       );
@@ -77,22 +83,25 @@ class Keuangan extends StatelessWidget {
           SizedBox(
             height: 12,
           ),
-           BlocBuilder<KeuanganCubit, KeuanganState>(
-          builder: (_, state) => (state is KeuanganLoaded)
-              ?Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: state.keuangans
-                      .map((e) =>
-          transactionItem(
-            iconUrl: 'assets/images/keuangan.png',
-            title: 'Laporan Keuangan',
-            time: '2020 - 2021',
-            view: 'Lihat',
-          ),)
-                      .toList(),): SizedBox(
-                  height: 30,
-                ),)
-          
+          BlocBuilder<KeuanganCubit, KeuanganState>(
+            builder: (_, state) => (state is KeuanganLoaded)
+                ? Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: state.keuangans
+                        .map(
+                          (e) => transactionItem(
+                              iconUrl: 'assets/images/keuangan.png',
+                              title: 'Laporan Keuangan',
+                              time: e.periode,
+                              view: 'Lihat',
+                              url: e.file),
+                        )
+                        .toList(),
+                  )
+                : SizedBox(
+                    height: 30,
+                  ),
+          )
         ],
       ),
     );
