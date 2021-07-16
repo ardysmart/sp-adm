@@ -9,3 +9,4 @@ part 'company_history.dart';
 part 'training.dart';
 part 'forkom.dart';
 part 'transaction.dart';
+part 'keuangan.dart';

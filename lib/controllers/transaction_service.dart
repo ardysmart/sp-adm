@@ -56,4 +56,34 @@ class TransactionService {
     //
     // return ApiReturnValue(message: "Wrong email or password");
   }
+
+  static Future<ApiReturnValue<String>> uploadPhotoTransaction(
+      String id, File pictureFile,
+      {http.MultipartRequest request}) async {
+    String url = baseURLApi + 'uploadphoto';
+    var uri = Uri.parse(url);
+
+    if (request == null) {
+      request = http.MultipartRequest("POST", uri)
+        ..headers['Content-Type'] = 'appliction/json'
+        ..headers['Authorization'] = "Bearer ${User.token}";
+    }
+
+    var multipartFile =
+        await http.MultipartFile.fromPath('file', pictureFile.path);
+    request.files.add(multipartFile);
+    request.fields['id'] = id;
+    var response = await request.send();
+    print(response.statusCode);
+    if (response.statusCode == 200) {
+      // String responseBody = await response.stream.bytesToString();
+      // var data = jsonDecode(responseBody);
+      // String imagePath = data['data'][0];
+
+      // return ApiReturnValue(value: imagePath);
+      return ApiReturnValue(message: "uploading bukti success");
+    } else {
+      return ApiReturnValue(message: "uploading profile value failed");
+    }
+  }
 }

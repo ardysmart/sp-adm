@@ -9,11 +9,11 @@ class DetailtransactionPage extends StatefulWidget {
 }
 
 class _DetailtransactionPageState extends State<DetailtransactionPage> {
-  File pictureFile;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: getBody(),
+      bottomSheet: getBottom(),
     );
   }
 
@@ -24,6 +24,29 @@ class _DetailtransactionPageState extends State<DetailtransactionPage> {
         Spacer(),
         Text(value),
       ],
+    );
+  }
+
+  Widget getBottom() {
+    var size = MediaQuery.of(context).size;
+    return Container(
+      height: 80,
+      width: size.width,
+      child: FlatButton(
+          color: primary,
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>
+                    UploadBuktiTransaction(transaction: widget.transaction),
+              ),
+            );
+          },
+          child: Text(
+            "Upload Bukti bayar",
+            style: TextStyle(fontSize: 18, color: white),
+          )),
     );
   }
 
@@ -49,6 +72,10 @@ class _DetailtransactionPageState extends State<DetailtransactionPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Container(
+                    height: 200,
+                    color: Colors.grey,
+                  ),
                   SizedBox(height: 30),
                   rowDetail("Nama User", widget.transaction.userName),
                   SizedBox(height: 15),

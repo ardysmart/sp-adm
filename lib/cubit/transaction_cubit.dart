@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:sp_adm_new/controllers/services.dart';
@@ -23,5 +25,12 @@ class TransactionCubit extends Cubit<TransactionState> {
     } else {
       emit(TransactionLoadingFailed(result.message));
     }
+  }
+
+  Future<String> uploadPhotoTransaction(String id, File pictureFile) async {
+    ApiReturnValue result =
+        await TransactionService.uploadPhotoTransaction(id, pictureFile);
+    print(result.message);
+    return result.message;
   }
 }

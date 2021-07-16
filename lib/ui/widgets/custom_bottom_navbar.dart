@@ -21,6 +21,8 @@ class CustomBottomNavBar extends StatelessWidget {
                 ProgramState state = context.bloc<ProgramCubit>().state;
                 context.bloc<ForkomCubit>().getForkom();
                 ForkomState stateForkom = context.bloc<ForkomCubit>().state;
+                context.bloc<KeuanganCubit>().getLaporanKeuangan('7');
+                KeuanganState stateKeuangan = context.bloc<KeuanganCubit>().state;
                 if (state is ProgramLoaded) {
                   onTap(0);
                 }

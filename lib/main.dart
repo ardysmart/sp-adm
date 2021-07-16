@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (_) => TrainingCubit()),
         BlocProvider(create: (_) => ForkomCubit()),
         BlocProvider(create: (_) => TransactionCubit()),
+        BlocProvider(create: (_) => KeuanganCubit()),
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
