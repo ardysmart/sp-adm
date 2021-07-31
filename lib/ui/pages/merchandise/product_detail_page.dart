@@ -34,7 +34,6 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
   int qty = 1;
   @override
   void initState() {
-    //  implement initState
     super.initState();
     setState(() {
       activeImg = widget.img;

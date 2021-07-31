@@ -17,9 +17,6 @@ class TransactionService {
         },
         body: jsonEncode(<String, String>{
           "user": userId,
-          "merchandise": merchandiseId,
-          "quantity": qty,
-          "total": total
         }));
 
     if (response.statusCode != 200) {
@@ -27,7 +24,23 @@ class TransactionService {
     }
 
     var data = jsonDecode(response.body);
-    // Transaction value = Transaction.fromJson(data["data"][0]);
+    var idTransaksi = data["data"][0]["id"];
+    String urlInsert = baseURLApi + 'detail_transaksi';
+    var responseInsert = await client.post(Uri.parse(urlInsert),
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+          'Authorization': 'Bearer ${User.token}'
+        },
+        body: jsonEncode(<String, String>{
+          "id_merchandise": merchandiseId,
+          "jumlah": qty,
+          "id_transaksi": idTransaksi.toString()
+        }));
+    if (responseInsert.statusCode != 200) {
+      return ApiReturnValue(message: "Please try again");
+    }
+    print(responseInsert.body);
     return ApiReturnValue(
         message: "Checkout berhasil silahkan upload bukti pembayaran");
   }
@@ -50,11 +63,10 @@ class TransactionService {
       return ApiReturnValue(message: "Please try again");
     }
     var data = jsonDecode(response.body);
+    print(data);
     List<Transaction> transaction =
         (data as Iterable).map((e) => Transaction.fromJson(e)).toList();
     return ApiReturnValue(value: transaction);
-    //
-    // return ApiReturnValue(message: "Wrong email or password");
   }
 
   static Future<ApiReturnValue<String>> uploadPhotoTransaction(
@@ -85,5 +97,30 @@ class TransactionService {
     } else {
       return ApiReturnValue(message: "uploading profile value failed");
     }
+  }
+
+  static Future<ApiReturnValue<List<DetailTransaction>>> getDetailtransaction(
+      id,
+      {http.Client client}) async {
+    client ??= http.Client();
+
+    String url = baseURLApi + 'detail_transaksi_peruser';
+    var response = await client.post(Uri.parse(url),
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+          "Authorization": "Bearer ${User.token}"
+        },
+        body: jsonEncode(<String, String>{
+          "id_transaksi": id,
+        }));
+    if (response.statusCode != 200) {
+      return ApiReturnValue(message: "Please try again");
+    }
+    var data = jsonDecode(response.body);
+    print(data);
+    List<DetailTransaction> detailtransaction =
+        (data as Iterable).map((e) => DetailTransaction.fromJson(e)).toList();
+    return ApiReturnValue(value: detailtransaction);
   }
 }

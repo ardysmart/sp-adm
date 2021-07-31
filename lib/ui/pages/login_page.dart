@@ -105,9 +105,9 @@ class _LoginPageState extends State<LoginPage> {
                                   .bloc<MerchandiseCubit>()
                                   .getMerchandise();
                               await context.bloc<ProgramCubit>().getPrograms();
-                              await context
-                                  .bloc<CompanyHistoryCubit>()
-                                  .getCompanyHistory();
+                              // await context
+                              //     .bloc<CompanyHistoryCubit>()
+                              //     .getCompanyHistory();
                               await context
                                   .bloc<TrainingCubit>()
                                   .getTrainings();

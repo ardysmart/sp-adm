@@ -49,7 +49,7 @@ class _TransactionPageState extends State<TransactionPage> {
                                               style: TextStyle(
                                                   fontSize: 12,
                                                   color: Colors.black26)),
-                                          Text(e.merchandiseName,
+                                          Text(e.id.toString(),
                                               style: TextStyle(
                                                   fontWeight: bold,
                                                   fontSize: 16)),
@@ -68,23 +68,29 @@ class _TransactionPageState extends State<TransactionPage> {
                                           color: Colors.black, fontSize: 15),
                                     )),
                                     onTap: () async {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
+                                      await context
+                                          .bloc<DetailtransactionCubit>()
+                                          .getDetailtransaction(
+                                              e.id.toString());
+                                      DetailtransactionState state = context
+                                          .bloc<DetailtransactionCubit>()
+                                          .state;
+                                      if (state is DetailtransactionLoaded) {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
                                             builder: (context) =>
                                                 DetailtransactionPage(
-                                                  transaction: Transaction(
-                                                      id: e.id,
-                                                      userName: e.userName,
-                                                      quantity: e.quantity,
-                                                      total: e.total,
-                                                      status: e.status,
-                                                      merchandiseName:
-                                                          e.merchandiseName,
-                                                      linkPembayaran:
-                                                          e.linkPembayaran),
-                                                )),
-                                      );
+                                              transaction: Transaction(
+                                                  id: e.id,
+                                                  userName: e.userName,
+                                                  status: e.status,
+                                                  linkPembayaran:
+                                                      e.linkPembayaran),
+                                            ),
+                                          ),
+                                        );
+                                      }
                                     },
                                   ),
                                 ),

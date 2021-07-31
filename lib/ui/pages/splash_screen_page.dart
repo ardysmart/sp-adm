@@ -31,7 +31,7 @@ class _SplashScreenState extends State<SplashScreen> {
       if (state is UserLoaded) {
         await context.bloc<MerchandiseCubit>().getMerchandise();
         await context.bloc<ProgramCubit>().getPrograms();
-        await context.bloc<CompanyHistoryCubit>().getCompanyHistory();
+        // await context.bloc<CompanyHistoryCubit>().getCompanyHistory();
         await context.bloc<TrainingCubit>().getTrainings();
       }
     }
@@ -61,7 +61,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   height: 300,
                   width: 300,
                   child: Image.asset(
-                   "assets/images/logo_white_sm.png",
+                    "assets/images/logo_white_sm.png",
                     fit: BoxFit.cover,
                   ),
                 ),

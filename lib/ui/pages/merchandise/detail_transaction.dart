@@ -79,14 +79,79 @@ class _DetailtransactionPageState extends State<DetailtransactionPage> {
                   SizedBox(height: 30),
                   rowDetail("Nama User", widget.transaction.userName),
                   SizedBox(height: 15),
-                  rowDetail("Nama Barang", widget.transaction.merchandiseName),
-                  SizedBox(height: 15),
-                  rowDetail("Quantity", widget.transaction.quantity),
-                  SizedBox(height: 15),
-                  rowDetail("Total Price", widget.transaction.total)
                 ],
               ),
-            )
+            ),
+            Text("List Produk"),
+            // BlocBuilder<DetailtransactionCubit, DetailtransactionState>(
+            //   builder: (_, state) => (state is DetailtransactionLoaded)
+            //       ? Column(
+            //           crossAxisAlignment: CrossAxisAlignment.start,
+            //           children: state.detailtransactions
+            //               .map(
+            //                 (e) => Container(
+            //                   decoration: BoxDecoration(
+            //                       color: Colors.white,
+            //                       boxShadow: [
+            //                         BoxShadow(
+            //                           color: Colors.black,
+            //                           spreadRadius: 0,
+            //                           blurRadius: 3,
+            //                         ),
+            //                       ]),
+            //                   margin: EdgeInsets.fromLTRB(15, 20, 15, 0),
+            //                   child: Row(
+            //                     mainAxisAlignment:
+            //                         MainAxisAlignment.spaceBetween,
+            //                     children: [
+            //                       Container(
+            //                         margin: EdgeInsets.fromLTRB(10, 20, 15, 20),
+            //                         alignment: Alignment.centerLeft,
+            //                         child: Row(
+            //                           children: [
+            //                             Container(
+            //                                 child: Image.asset(
+            //                               "assets/images/doc.png",
+            //                               width: 45,
+            //                             )),
+            //                             Column(
+            //                               crossAxisAlignment:
+            //                                   CrossAxisAlignment.start,
+            //                               children: [
+            //                                 Text("Dokumen :",
+            //                                     style: TextStyle(
+            //                                         fontSize: 12,
+            //                                         color: Colors.black26)),
+            //                                 Text(e.name,
+            //                                     style: TextStyle(
+            //                                         fontWeight: bold,
+            //                                         fontSize: 16)),
+            //                               ],
+            //                             ),
+            //                           ],
+            //                         ),
+            //                       ),
+            //                       Container(
+            //                         margin: EdgeInsets.only(right: 10),
+            //                         child: InkWell(
+            //                           child: Container(
+            //                               child: Text(
+            //                             "Lihat",
+            //                             style: TextStyle(
+            //                                 color: Colors.black, fontSize: 15),
+            //                           )),
+            //                         ),
+            //                       ),
+            //                     ],
+            //                   ),
+            //                 ),
+            //               )
+            //               .toList(),
+            //         )
+            //       : SizedBox(
+            //           height: 30,
+            //         ),
+            // )
           ],
         ),
       ),

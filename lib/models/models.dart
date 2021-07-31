@@ -11,3 +11,4 @@ part 'forkom.dart';
 part 'transaction.dart';
 part 'keuangan.dart';
 part 'dansosduk.dart';
+part 'detail_transaction.dart';
